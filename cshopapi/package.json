@@ -1,0 +1,22 @@
+{
+  "name": "cshopapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chkim116/NodeShop.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chkim116/NodeShop/issues"
+  },
+  "homepage": "https://github.com/chkim116/NodeShop#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
