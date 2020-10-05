@@ -8,7 +8,7 @@ import { Product } from "./Pages/Product";
 import styled from "styled-components";
 
 const WrapBody = styled.div`
-  margin-top: 45px;
+  margin-top: 97px;
 `;
 
 function App() {

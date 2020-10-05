@@ -117,7 +117,7 @@ export const HomeForm = () => {
     <>
       <HomeBlock>
         <div className="main__slider">
-          <img className="main__slider-img" src={img3} alt="메인이미지" />
+          <img className="main__slider-img" src={img1} alt="메인이미지" />
         </div>
         <HomeVideo />
       </HomeBlock>
