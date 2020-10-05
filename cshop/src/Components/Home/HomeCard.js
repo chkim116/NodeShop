@@ -17,9 +17,26 @@ const HomeCardBlock = styled.div`
   }
 
   .main__card-title {
+    position: relative;
     &:nth-child(even) {
       text-align: right;
       margin-top: 1em;
+      &::before {
+        content: "<";
+        position: absolute;
+        right: 60px;
+        font-size: 16px;
+        top: 6px;
+      }
+    }
+    &:nth-child(odd) {
+      &::before {
+        content: ">";
+        position: absolute;
+        left: 60px;
+        font-size: 16px;
+        top: 6px;
+      }
     }
   }
   .main__card-text {
