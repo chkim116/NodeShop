@@ -5,11 +5,18 @@ import { Footer } from "./Components/Layouts/Footer";
 import { Header } from "./Components/Layouts/Header";
 import { User } from "./Pages/User";
 import { Product } from "./Pages/Product";
+import styled from "styled-components";
+import { Nav } from "./Components/Layouts/Nav";
+
+const WrapBody = styled.div`
+  margin-top: 45px;
+`;
 
 function App() {
   return (
-    <>
+    <WrapBody>
       <Header />
+      <Nav />
       <Switch>
         <Route>
           <Route exact path="/" component={Home}></Route>
@@ -18,7 +25,7 @@ function App() {
         </Route>
       </Switch>
       <Footer />
-    </>
+    </WrapBody>
   );
 }
 
