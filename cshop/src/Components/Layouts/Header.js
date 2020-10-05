@@ -4,6 +4,8 @@ import styeld from "styled-components";
 import { BsSearch, BsHeart } from "react-icons/bs";
 import { BiUser, BiCartAlt } from "react-icons/bi";
 import { VscMenu } from "react-icons/vsc";
+import { MediaNav } from "./MediaNav";
+import { Nav } from "./Nav";
 const HeaderBlock = styeld.header`
   display: flex;
   justify-content: space-between;
@@ -24,6 +26,12 @@ const HeaderBlock = styeld.header`
    }
   .header__items {
     flex: 1;
+    &:nth-child(1) {
+      visibility: hidden;
+      @media all and (max-width: 740px) {
+      visibility: visible;
+      }
+    }
       &:nth-child(2) {
         text-align: center;
       }
@@ -36,6 +44,7 @@ const HeaderBlock = styeld.header`
   }
   .header__items-icons {
     cursor:pointer;
+    }
   }
 
   .header__user{
@@ -51,7 +60,6 @@ const AsideSearch = styeld.div`
   position: fixed;
   z-index: 55;
   width: 100%;
-  background: white;
   top:45px;
   z-index:10000;
   display: ${(props) => (props.show ? "block" : "none")};
@@ -77,27 +85,36 @@ const AsideSearch = styeld.div`
 
 export const Header = () => {
   const [show, setShow] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
+  const [showMedia, setShowMedia] = useState(false);
   const onShowing = () => {
     show ? setShow(false) : setShow(true);
+  };
+  const onSearch = () => {
+    showSearch ? setShowSearch(false) : setShowSearch(true);
+  };
+  const onMedia = () => {
+    showMedia ? setShowMedia(false) : setShowMedia(true);
   };
 
   return (
     <>
-      <AsideSearch show={show}>
+      <AsideSearch show={showSearch}>
         <input className="aside__search" type="text" placeholder="검색" />
         <button type="submit" className="aside__btn">
           <BsSearch size={20} />
         </button>
-        <span onClick={onShowing} className="aside__del">
+        <span onClick={onSearch} className="aside__del">
           X
         </span>
       </AsideSearch>
       <HeaderBlock>
         <div className="header">
           <div className="header__items">
-            <span className="header__items-icons">
-              <VscMenu size={20} />
+            <span className="header__items-icons" onClick={onMedia}>
+              {showMedia ? "X" : <VscMenu size={20} />}
             </span>
+            <MediaNav showMedia={showMedia} />
           </div>
           <div className="header__items">
             <Link to="/" className="header__items-icons">
@@ -105,7 +122,7 @@ export const Header = () => {
             </Link>
           </div>
           <div className="header__items">
-            <span className="header__user" onClick={onShowing}>
+            <span className="header__user" onClick={onSearch}>
               <BsSearch size={20} />
             </span>
             <Link to="/product/sample" className="header__user">
@@ -120,6 +137,7 @@ export const Header = () => {
           </div>
         </div>
       </HeaderBlock>
+      <Nav show={show} onShowing={onShowing} />
     </>
   );
 };

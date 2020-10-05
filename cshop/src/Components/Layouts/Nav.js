@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import styled from "styled-components";
 
 const NavBlock = styled.nav`
@@ -10,7 +9,7 @@ const NavBlock = styled.nav`
   position: fixed;
   z-index: 999;
   justify-content: center;
-  @media all and (max-width: 900px) {
+  @media all and (max-width: 740px) {
     display: none;
   }
   .nav__items {
@@ -22,6 +21,7 @@ const NavBlock = styled.nav`
       font-size: 24px;
       position: relative;
       cursor: pointer;
+
       &:hover:before {
         content: "";
         height: 2px;
@@ -58,13 +58,7 @@ const SubNavBlock = styled.div`
   }
 `;
 
-export const Nav = () => {
-  const [show, setShow] = useState(false);
-
-  const onShowing = () => {
-    show ? setShow(false) : setShow(true);
-  };
-
+export const Nav = ({ show, onShowing }) => {
   return (
     <>
       <NavBlock>
