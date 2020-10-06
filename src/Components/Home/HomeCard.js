@@ -97,14 +97,12 @@ const Wrap = styled.div`
 
 export const HomeCard = ({ items }) => {
   const settings = {
-    dots: true,
-    infinite: true,
+    dots: false,
+    infinite: false,
     slidesToShow: 4,
-    slidesToScroll: 1,
-    autoplay: true,
+    slidesToScroll: 2,
     speed: 800,
     autoplaySpeed: 5000,
-    cssEase: "linear",
   };
 
   return (

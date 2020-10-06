@@ -37,7 +37,6 @@ const HomeBlock = styled.main`
 const HomeAside = styled.div`
   background: #ffeaa7;
   width: 100%;
-  min-height: 720px;
   padding: 2em;
   .aside__photo {
     max-width: 1640px;
@@ -48,6 +47,7 @@ const HomeAside = styled.div`
     @media all and (max-width: 600px) {
       padding-bottom: 40%;
     }
+
     .aside__photo-desc {
       .link {
         position: absolute;
@@ -65,8 +65,13 @@ const HomeAside = styled.div`
         font-weight: bold;
         background: rgba(45, 52, 54, 0.5);
         &:hover {
+          @media all and (min-width: 768px) {
+            opacity: 1;
+            transition: 800ms;
+          }
+        }
+        @media all and (max-width: 768px) {
           opacity: 1;
-          transition: 800ms;
         }
         button {
         }

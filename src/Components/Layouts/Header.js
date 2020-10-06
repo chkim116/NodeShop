@@ -1,19 +1,20 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import styeld from "styled-components";
+import styled from "styled-components";
 import { BsSearch, BsHeart } from "react-icons/bs";
 import { BiUser, BiCartAlt } from "react-icons/bi";
 import { VscMenu } from "react-icons/vsc";
 import { MediaNav } from "./MediaNav";
 import { Nav } from "./Nav";
-const HeaderBlock = styeld.header`
+
+const HeaderBlock = styled.header`
   display: flex;
   justify-content: space-between;
   top: 0;
   width: 100%;
-  border-bottom: #DDDDDD;
+  border-bottom: #dddddd;
   background: white;
-  padding : 0 1em;
+  padding: 0 1em;
   align-items: center;
   height: 45px;
   position: fixed;
@@ -23,45 +24,50 @@ const HeaderBlock = styeld.header`
     width: 100%;
     display: flex;
     margin: 0 auto;
-   }
+  }
   .header__items {
     flex: 1;
     &:nth-child(1) {
       visibility: hidden;
       @media all and (max-width: 740px) {
-      visibility: visible;
+        visibility: visible;
       }
     }
-      &:nth-child(2) {
-        text-align: center;
-      }
-      &:nth-child(3) {
-        text-align: right;
-        @media all and (max-width: 400px) {
-          flex:2;
-        }
-      }
+    &:nth-child(2) {
+      text-align: center;
+    }
+    &:nth-child(3) {
+      text-align: right;
+    }
   }
   .header__items-icons {
-    cursor:pointer;
-    }
+    cursor: pointer;
   }
 
-  .header__user{
+  .header__user {
     cursor: pointer;
     margin: 0 0.5em;
+    width: 22px;
+    hegiht: 22px;
     @media all and (max-width: 500px) {
       margin: 0 0.2em;
+      &:nth-child(2),
+      &:nth-child(3) {
+        display: none;
+      }
+    }
+    &:hover .header__user-items {
+      display: block;
     }
   }
 `;
 
-const AsideSearch = styeld.div`
+const AsideSearch = styled.div`
   position: fixed;
   z-index: 55;
   width: 100%;
-  top:45px;
-  z-index:10000;
+  top: 45px;
+  z-index: 10000;
   display: ${(props) => (props.show ? "block" : "none")};
   text-align: center;
   .aside__search {
@@ -74,19 +80,25 @@ const AsideSearch = styeld.div`
   }
   .aside__btn {
     all: unset;
-    cursor:pointer;
-    margin: 0 .5em;
+    cursor: pointer;
+    margin: 0 0.5em;
   }
   .aside__del {
-    cursor:pointer;
+    cursor: pointer;
     font-size: 24px;
   }
-  `;
+`;
 
 export const Header = () => {
   const [show, setShow] = useState(false);
+  const [user, setUser] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [showMedia, setShowMedia] = useState(false);
+
+  const onUser = () => {
+    user ? setUser(false) : setUser(true);
+  };
+
   const onShowing = () => {
     show ? setShow(false) : setShow(true);
   };
@@ -108,7 +120,7 @@ export const Header = () => {
           X
         </span>
       </AsideSearch>
-      <HeaderBlock>
+      <HeaderBlock user={user}>
         <div className="header">
           <div className="header__items">
             <span className="header__items-icons" onClick={onMedia}>
@@ -132,7 +144,7 @@ export const Header = () => {
               <BsHeart size={20} />
             </Link>
             <Link to="/user" className="header__user">
-              <BiUser size={24} />
+              <BiUser size={22} />
             </Link>
           </div>
         </div>

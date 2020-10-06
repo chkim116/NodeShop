@@ -9,6 +9,9 @@ const Wrap = styled.div`
     text-align: center;
     padding: 0em 0.3em 7em 0.3em;
     position: relative;
+    @media all and (max-width: 480px) {
+      display: none;
+    }
     .main__video-text {
       padding: 2em 0;
       text-align: center;
@@ -59,7 +62,8 @@ export const HomeVideo = () => {
         <div className="main__video-wrap">
           <video
             src={video}
-            autoPlay={true}
+            autoPlay={window.innerWidth < 768 ? false : true}
+            controls={window.innerWidth < 768 ? true : false}
             loop
             muted
             alt="비디옹"
